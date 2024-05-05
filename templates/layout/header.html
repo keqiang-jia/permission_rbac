@@ -1,0 +1,51 @@
+<style>
+    body {
+        margin-top: 60px;
+    }
+</style>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-hide-xs layui-bg-black">权限管理</div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+            <li class="layui-nav-item layui-hide-xs"><a href="/home">个人中心</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="/admin">后台管理</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">操作</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/auth/read">阅读文章</a></dd>
+                    <dd><a href="/auth/commit">评论文章</a></dd>
+                    <dd><a href="/auth/write">写新文章</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            {% if g.user %}
+                <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                    <a href="javascript:;">
+                        <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
+                             class="layui-nav-img">
+                        张三
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">个人中心</a></dd>
+                        <dd><a href="">设置</a></dd>
+
+                        <dd><a href="/logout">退出</a></dd>
+                    </dl>
+                </li>
+            {% else %}
+                <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                    <a href="/login">登录</a>
+                </li>
+                <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                    <a href="/register">注册</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

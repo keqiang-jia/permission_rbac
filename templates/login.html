@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+<body>
+{% include 'layout/header.html' %}
+
+<h3 class="layui-font-20" style="width: 500px;margin: 100px auto;text-align: center">登录用户</h3>
+<form class="layui-form" action="" style="width: 500px;margin: 100px auto;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" required
+                   lay-verify="required" placeholder="请输入用户名"
+                   autocomplete="off" value="zhengxin"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码框</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required
+                   lay-verify="required" placeholder="请输入密码"
+                   autocomplete="off" value="123456"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">请输入密码</div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script src="/static/layui/layui.js"></script>
+<script>
+  layui.use(function() {
+    var form = layui.form;
+    form.on('submit(submit)', function(data) {
+      layui.$.ajax({
+        'url': '/login',
+        type: 'POST',
+        data: JSON.stringify(data.field),
+        contentType: 'application/json',
+        success: function(data) {
+          console.log(data);
+          layer.msg(data.message);
+          if (data.status === 'success') {
+            window.location.href = data.next;
+          }
+        },
+      });
+      return false;
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评论</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+<body>
+{% include 'layout/header.html' %}
+
+
+<div class="layui-container">
+    <h3 class="layui-font-20" style="width: 500px;margin: 100px auto;text-align: center">
+        评论文章
+    </h3>
+</div>
+
+<script src="/static/layui/layui.js"></script>
+<script>
+  //注意：导航 依赖 element 模块，否则无法进行功能性操作
+  layui.use('element', function() {
+    var element = layui.element;
+
+  });
+</script>
+</body>
+</html>
